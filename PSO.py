@@ -15,23 +15,7 @@ xmin = 0
 xmax = 1
 
 
-# 随机位置代表的是所需要模拟的参数，在这里面代表的是
-# 随机生成位置和速度
-position = np.random.randn(50, 4)
-velocity = np.random.randn(50, 4)
-# 记录个体最佳记录
-best_position = position # 个体初始的最佳位置就是初始位置
-best_value = np.zeros(50)
-# 记录群体最佳位置和最佳值
-gbest_position = [0, 0, 0, 0]
-gbest_value = 0
 
-# 循环50次
-for i in range(50):
-    # 50个数据
-    for j in range(50):
-        position[j] += velocity[j]
-        velocity[j] =
 
 
 
