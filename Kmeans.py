@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
 
 data = pd.read_excel('D:/Python/test/test.xlsx')
 # 提取分类依据
@@ -14,7 +15,6 @@ data['cluster'] = km.labels_
 print(data)
 data.sort_values('cluster')
 print(data)
-# data.to_excel("聚类.xlsx")
 #类中心
 cluster_centers = km.cluster_centers_
 cluster_coordinate = pd.DataFrame(cluster_centers)
@@ -123,16 +123,16 @@ ax = plt.axes()
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 plt.savefig('小区坐标.jpg')
-scatter_matrix(data[["小区横坐标", "小区纵坐标"]], s=100, alpha=1, c=colors[data["cluster"]], figsize=(10, 10))
+plt.scatter(data[["小区横坐标", "小区纵坐标"]], s=100, alpha=1, c=colors[data["cluster"]], figsize=(10, 10))
 plt.suptitle("With 2centroids initialized")
 
 #轮廓系数
-score = metrics.silhouette_score(X, data.cluster)
+score = silhouette_score(X, data.cluster)
 print(score)
 scores = []
 for k in range(2, 30):
     labels = KMeans(n_clusters=k).fit(X).labels_
-    score = metrics.silhouette_score(X, labels)
+    score = silhouette_score(X, labels)
     scores.append(score)
 
 plt.plot(list(range(2, 30)), scores)
