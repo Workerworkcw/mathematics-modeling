@@ -1,16 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
-# 生成随机数据
-data = [np.random.normal(0, std, 100) for std in range(1, 4)]
 
-# 绘制箱型图
-plt.boxplot(data)
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
 
-# 添加标题和坐标轴标签
-plt.title('Box Plot')
-plt.xlabel('Data Sets')
-plt.ylabel('Values')
+N = 8
+x = np.linspace(0, 2*np.pi, N, endpoint=False)
+height = np.random.randint(3, 15, size=N)
 
-# 显示图形
+# 画图
+# polar: 极坐标
+axes = plt.subplot(111, projection='polar')
+axes.bar(x=x, height=height, width=0.5, color='b')
 plt.show()
