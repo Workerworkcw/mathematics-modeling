@@ -1,3 +1,4 @@
+# 这个是ALNS+模拟退火算法
 import copy
 import time
 import random
@@ -8,7 +9,7 @@ import math
 import folium
 
 
-class ALNSSearch():
+class ALNSSearch:
     # 计算TSP总距离
     # 计算TSP总距离
     @staticmethod
